@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-white text-gray-900 antialiased;
+  }
+}
+
+/* Geometric Background Animation */
+.geometric-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.geometric-shape {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  animation: float 20s infinite linear;
+}
+
+.shape-1 {
+  width: 100px;
+  height: 100px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  top: 60%;
+  right: 10%;
+  animation-delay: -5s;
+}
+
+.shape-3 {
+  width: 80px;
+  height: 80px;
+  transform: rotate(45deg);
+  border-radius: 12px;
+  bottom: 20%;
+  left: 30%;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(100px, 50px) rotate(180deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+/* Minimal Components */
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-black text-white rounded-md transition-all duration-200 ease-in-out
+    hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-white text-black border border-black rounded-md transition-all duration-200 ease-in-out
+    hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2;
+  }
+
+  .input-minimal {
+    @apply block w-full px-4 py-2 border border-gray-300 rounded-md transition-all duration-200 ease-in-out
+    focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400;
+  }
+
+  .card-minimal {
+    @apply bg-white border border-gray-200 rounded-lg p-6 transition-all duration-200 ease-in-out
+    hover:shadow-lg;
+  }
+
+  .nav-minimal {
+    @apply fixed top-0 w-full bg-white border-b border-gray-200 z-50;
+  }
+}
+
+/* Fade Animations */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Table Styles */
+.table-minimal {
+  @apply min-w-full divide-y divide-gray-200;
+}
+
+.table-minimal th {
+  @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+
+.table-minimal td {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+}
+
+/* Status Badges */
+.badge-success {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-50 text-green-800;
+}
+
+.badge-error {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-50 text-red-800;
+}
